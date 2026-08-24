@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SIG WUS Platform Entry",
+  "type": "object",
+  "required": [
+    "platform",
+    "reference",
+    "transducer",
+    "tx_path",
+    "rx_path",
+    "design",
+    "data_link",
+    "specifications",
+    "application",
+    "access"
+  ],
+  "properties": {
+    "platform": {"type": "string"},
+    "reference": {"type": ["string", "null"]},
+    "manufacturer": {"type": "string"},
+    "frequency": {"type": "string"},
+    "depth": {"type": "string"},
+    "resolution": {"type": "string"},
+    "power": {"type": "string"},
+    "size": {"type": "string"},
+    "cost": {"type": "string"},
+    "framerate": {"type": "string"},
+    "weight": {"type": "string"},
+    "operation": {"type": "string"},
+    "transducer": {"type": "string"},
+    "tx_path": {"type": "string"},
+    "rx_path": {"type": "string"},
+    "design": {"type": "string"},
+    "data_link": {"type": "string"},
+    "specifications": {"type": "string"},
+    "application": {"type": "string"},
+    "access": {"type": "string"},
+    "image_url": {"type": "string", "format": "uri"},
+    "link": {"type": "string", "format": "uri"}
+  },
+  "additionalProperties": false
+}
