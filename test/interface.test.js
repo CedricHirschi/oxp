@@ -2,12 +2,12 @@
 //
 // Attribution: written by GLM (glm-5.3-flash) via the Oh My Pi coding harness,
 // 2026-08-27, working with the human researcher on the SIG-WUS X-change repo.
-// Verifies that src/index.html declares the elements the catalog JS relies on.
+// Verifies that index.html declares the elements the catalog JS relies on.
 const fs = require('fs');
 const path = require('path');
 
 // Resolve index.html path relative to this test file
-const indexPath = path.resolve(__dirname, '..', 'src', 'index.html');
+const indexPath = path.resolve(__dirname, '..', 'index.html');
 let html;
 try {
   html = fs.readFileSync(indexPath, 'utf8');

@@ -1,4 +1,4 @@
-// src/main.js — SIG-WUS X-change catalog renderer
+// main.js — SIG-WUS X-change catalog renderer
 // Fetches JSON, normalizes, populates filters, renders cards, and shows detail dialog.
 import Fuse from './vendor/fuse.min.mjs';
 

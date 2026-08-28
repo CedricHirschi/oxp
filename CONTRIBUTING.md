@@ -48,7 +48,7 @@ matches the BibTeX key in the source paper.
    }
    ```
    Use `source_url: null` for original illustrations you create yourself. Place the
-   image under `src/assets/devices/<platform-id>.<ext>` and reference it from the
+   image under `assets/devices/<platform-id>.<ext>` and reference it from the
    `image` field.
 5. Validate the entry locally (see below) and open a Pull Request against `main`.
 
@@ -72,7 +72,7 @@ new SVG illustration and mark it CC0.
 
 ## Code style
 - HTML: semantic markup, classes for styling only.
-- CSS: custom design system in `src/styles.css` (no Tailwind CDN dependency).
+- CSS: custom design system in `styles.css` (no Tailwind CDN dependency).
 - JavaScript: ES2022, no transpilation.
 - JSON: 2-space indentation, UTF-8.
 
@@ -88,7 +88,7 @@ To add a new field to platform entries:
 
 1. Edit `data/schema.json` to declare the new property with type and description.
 2. Add the property to existing entries in `data/platforms.json`.
-3. If the UI should filter or display the field, update `src/main.js`.
+3. If the UI should filter or display the field, update `main.js`.
 4. Run the validation script and the headless smoke test (see below).
 
 ## Validation
@@ -110,13 +110,13 @@ The catalog renders client-side, so a quick visual check after editing:
 
 ```bash
 # Start the dev server
-python3 -m http.server 8000 --bind 127.0.0.1 --directory src
+python3 -m http.server 8000 --bind 127.0.0.1 --directory .
 
 # In another shell, screenshot the page
 chromium --headless --no-sandbox --hide-scrollbars \
   --user-data-dir=/tmp/chrome-test \
   --window-size=1280,2400 \
-  --screenshot=docs/snap/check.png \
+  --screenshot=/tmp/check.png \
   --virtual-time-budget=8000 \
   "http://127.0.0.1:8000/"
 ```

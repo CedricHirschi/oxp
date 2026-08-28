@@ -45,18 +45,15 @@ removed in commit `92d6540` so it can be embedded into the parent SIG-WUS page).
 
 ## Dev server
 ```bash
-python3 -m http.server 8000 --bind 127.0.0.1 --directory src
+python3 -m http.server 8000 --bind 127.0.0.1 --directory .
 ```
 
 Then visit http://127.0.0.1:8000/.
 
 ## Deployment
-The `docs/` directory is the GitHub Pages artifact. Mirror `src/` to `docs/` after
-edits:
-
-```bash
-rsync -a --delete src/ docs/
-```
+The repository root is the GitHub Pages artifact (`main` branch, root, with
+`.nojekyll` disabling Jekyll). Edit site files in place and commit — there is
+no build or mirror step.
 
 ## Headless-browser testing (REQUIRED)
 
@@ -93,7 +90,7 @@ Use the `browser` tool (Chromium via CDP) or Playwright/Puppeteer. The procedure
 used for the 2026-08-27 fix round (stylesheet corruption, year filter, timeline
 click-to-filter, featured gating):
 
-1. **Serve fresh.** `python3 -m http.server <port> --bind 127.0.0.1 --directory docs`.
+1. **Serve fresh.** `python3 -m http.server <port> --bind 127.0.0.1 --directory .`.
    Chromium caches aggressively per origin: when re-verifying after an edit, use an
    unused port or disable cache first (`Network.setCacheDisabled` via CDP) —
    otherwise you silently re-test the old stylesheet.
@@ -117,6 +114,4 @@ click-to-filter, featured gating):
    `@import|url(http|src="http` as an external-ref guard.
 8. **Visual proof:** element screenshots of the touched regions (stats strip,
    filter bar, dialogs) before/after — pixel evidence, not assumptions.
-9. **Ship:** mirror changed files `src/` → `docs/` with plain `cp` (do **not**
-   `rsync --delete`; it would remove `docs/.nojekyll` and files CI has already
-   published), run `python3 test/interface_test.py`, then commit.
+9. **Ship:** run `python3 test/interface_test.py`, then commit.

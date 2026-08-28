@@ -20,4 +20,3 @@ def clean_file(path):
     print(f'Cleaned {path}')
 
 clean_file('data/platforms.json')
-clean_file('docs/data/platforms.json')

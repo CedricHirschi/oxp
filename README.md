@@ -16,25 +16,22 @@ via a client-side parametric search, filters, and a detail dialog.
 ## Repository layout
 ```
 .
+├── index.html            # Catalog page (site root = served root)
+├── styles.css
+├── main.js
+├── vendor/               # Locally-vendored dependencies (Fuse.js)
 ├── data/                 # Canonical JSON catalog and schema
 │   ├── platforms.json
 │   └── schema.json
-├── src/                  # Static site source (HTML, CSS, JS)
-│   ├── index.html
-│   ├── styles.css
-│   ├── main.js
-│   ├── vendor/           # Locally-vendored dependencies (Fuse.js)
-│   ├── assets/
-│   │   ├── logo.svg
-│   │   └── devices/      # Per-platform illustrations / photos
-│   └── data/             # Mirror of ../data used by the dev server
-└── docs/                 # GitHub Pages output (mirror of src/)
+└── assets/
+    ├── logo.svg
+    └── devices/          # Per-platform illustrations / photos
 ```
 
 ## Quick start (local development)
 ```bash
-# Serve the `src` directory with Python's built-in HTTP server
-python3 -m http.server 8000 --bind 127.0.0.1 --directory src
+# Serve the repository root (the site root) with Python's built-in HTTP server
+python3 -m http.server 8000 --bind 127.0.0.1 --directory .
 # Open http://127.0.0.1:8000 in a browser to view the UI
 ```
 
@@ -43,16 +40,12 @@ The page loads the platform data from `data/platforms.json` and finds Fuse.js un
 ## Adding new platforms
 See **[CONTRIBUTING.md](CONTRIBUTING.md) for the workflow. Each entry follows the JSON schema
 in `data/schema.json` and should ideally reference either a real device photo under
-`src/assets/devices/` (relative path) or a custom SVG illustration.
+`assets/devices/` (relative path) or a custom SVG illustration.
 
 ## Deployment
-**GitHub Pages.** The `docs/` directory is the published artifact. Update it by running:
-
-```bash
-rsync -a --delete src/ docs/  # then commit docs/
-```
-
-The repository is configured to publish from the `docs/` folder on the `main` branch.
+**GitHub Pages.** The repository root is the published site; `.nojekyll` disables
+Jekyll processing. Pages is configured to deploy from the root of the `main`
+branch — commit site files in place, no build or mirror step.
 
 ## Verification
 

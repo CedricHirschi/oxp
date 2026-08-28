@@ -2,11 +2,11 @@
 #
 # Attribution: written by GLM (glm-5.3-flash) via the Oh My Pi coding harness,
 # 2026-08-27, working with the human researcher on the SIG-WUS X-change repo.
-# Verifies that src/index.html declares the elements the catalog JS relies on.
+# Verifies that index.html declares the elements the catalog JS relies on.
 
 import sys, pathlib
 
-index_path = pathlib.Path(__file__).resolve().parents[1] / 'src' / 'index.html'
+index_path = pathlib.Path(__file__).resolve().parents[1] / 'index.html'
 
 try:
     html = index_path.read_text(encoding='utf-8')
