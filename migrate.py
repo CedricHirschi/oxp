@@ -2,7 +2,7 @@
 """Split data/platforms.json into platforms/<id>/ folders.
 
 Each platform directory contains:
-  platform.json  — entry matching platforms/_schema.json
+  index.json     — entry matching platforms/_schema.json
   assets/        — device image copied from assets/devices/
   licenses/      — IMAGE / HARDWARE / SOFTWARE notices derived from the entry
 
@@ -183,7 +183,7 @@ def migrate():
             entry["image"] = rel_image
 
         validate(entry, schema, slug)
-        dump_json(dest_dir / "platform.json", entry)
+        dump_json(dest_dir / "index.json", entry)
         write_licenses(platform, dest_dir)
         print(f"  {slug}")
 

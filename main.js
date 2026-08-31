@@ -1,5 +1,5 @@
 // main.js — SIG-WUS X-change catalog renderer
-// Loads platforms/index.json, then each platforms/<id>/platform.json.
+// Loads platforms/index.json, then each platforms/<id>/index.json.
 import Fuse from './vendor/fuse.min.mjs';
 
 const CATALOG_INDEX = 'platforms/index.json';
@@ -584,7 +584,7 @@ async function loadCatalog() {
     if (typeof id !== 'string' || !id) {
       throw new Error('platforms/index.json contains a non-string id');
     }
-    const p = await fetchJSON(`platforms/${encodeURIComponent(id)}/platform.json`);
+    const p = await fetchJSON(`platforms/${encodeURIComponent(id)}/index.json`);
     if (!p.id) p.id = id;
     return resolveImage(p);
   }));
